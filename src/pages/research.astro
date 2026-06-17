@@ -1,0 +1,267 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const researchItems = [
+  {
+    title:
+      "Bilateral External Rotation Torque CT Remains Reliable in Syndesmotic Assessment Despite Lateral Ligament Injury, but Reveals Increased Tibiotalar Rotational Instability",
+    meta: "Foot & Ankle Orthopaedics · 2026 · Second author",
+    summary:
+      "Study on syndesmotic assessment using bilateral external rotation torque CT, showing that the method remains reliable despite lateral ligament injury while also revealing increased tibiotalar rotational instability.",
+    visualLabel: "2026",
+    visualMeta: "Foot & Ankle Orthopaedics",
+    paperUrl: "https://pubmed.ncbi.nlm.nih.gov/42153137/",
+    repoUrl: "",
+  },
+  {
+    title:
+      "Water contact angle data and FTIR data of stem cell/tenocyte co-culture-derived secretome releasing electrospun tube; and adhesion data of fully transected and sutured rabbit Achilles tendons three weeks post-operation under application of such a tube",
+    meta: "Data in Brief · 2025",
+    summary:
+      "Data article accompanying experimental work on secretome-releasing electrospun tubes and postoperative adhesion outcomes in a rabbit Achilles tendon model.",
+    visualLabel: "2025",
+    visualMeta: "Data in Brief",
+    paperUrl: "https://pubmed.ncbi.nlm.nih.gov/41210352/",
+    repoUrl: "",
+  },
+  {
+    title:
+      "Electrospun DegraPol Tube Delivering Stem Cell/Tenocyte Co-Culture-Derived Secretome to Transected Rabbit Achilles Tendon-In Vitro and In Vivo Evaluation",
+    meta: "International Journal of Molecular Sciences · 2025",
+    summary:
+      "In vitro and in vivo evaluation of an electrospun DegraPol tube delivering stem cell/tenocyte co-culture-derived secretome for rabbit Achilles tendon repair.",
+    visualLabel: "2025",
+    visualMeta: "Int. J. Mol. Sci.",
+    paperUrl: "https://pubmed.ncbi.nlm.nih.gov/40564922/",
+    repoUrl: "",
+  },
+  {
+    title:
+      "Biomechanics of Traumatic Head and Neck Injuries on Women: A State-of-the-Art Review and Future Directions",
+    meta: "Biology · 2023 · Second author",
+    summary:
+      "Review article on the biomechanics of traumatic head and neck injuries in women, with an emphasis on current evidence and future research directions.",
+    visualLabel: "2023",
+    visualMeta: "Biology",
+    paperUrl: "https://pubmed.ncbi.nlm.nih.gov/36671775/",
+    repoUrl: "",
+  },
+];
+
+const inPreparationItems = [
+  {
+    title: "Bovine B-Mode Ultrasound Experiment",
+    meta: "Current project · First author",
+    summary:
+      "Unified workflow for bovine B-mode ultrasound experiments, including acquisition and reconstruction, segmentation, ROI brightness analysis, mechanical-test alignment, and quality-control visualization.",
+    image: "/bovine-bmode.gif",
+    video: "/bovine-bmode.mp4",
+    imageAlt: "Bovine B-mode ultrasound project visualization",
+    paperUrl: "",
+    repoUrl: "https://github.com/jeroeng44/bovine-bmode",
+  },
+  {
+    title:
+      "Dynamic Tracking of Anterior Tibiofibular Distance during External Rotation in a Cadaveric Syndesmotic Injury Model",
+    meta: "Manuscript in revision · First author",
+    summary:
+      "Cadaveric syndesmotic injury work supported by a MATLAB analysis pipeline for dynamic tracking of anterior tibiofibular distance from CT segmentations, motion marker recordings, and torque data.",
+    image: "/syndesmotic-mapping.gif",
+    video: "/syndesmotic-mapping.mp4",
+    imageAlt: "Dynamic syndesmotic mapping visualization",
+    paperUrl: "",
+    repoUrl: "https://github.com/jeroeng44/SyndesmoticMapping",
+  },
+  {
+    title:
+      "Reconstruction of ITCL Contributes to Hindfoot Alignment in PCFD Without Limiting Subtalar Range of Motion: A Biomechanical Analysis Using a Flatfoot Model",
+    meta: "Manuscript in revision · First author",
+    summary:
+      "Optical motion tracking framework and kinematic analysis pipeline for foot and ankle biomechanics, including acquisition scripts, analysis workflows, and interactive visualization tools.",
+    image: "/talatrack-cyclic-loading.gif",
+    video: "/talatrack-cyclic-loading.mp4",
+    imageAlt: "TalaTrack cyclic loading visualization",
+    paperUrl: "",
+    repoUrl: "https://github.com/jeroeng44/TalaTrack",
+  },
+  {
+    title:
+      "Arthroscopic Reconstruction of the Inferior Glenohumeral Ligament Restores Stability in a Cadaveric Shoulder Model of Uni- and Multidirectional Instability: A Comparative Biomechanical Study",
+    meta: "Manuscript in revision",
+    summary:
+      "Comparative cadaveric shoulder study evaluating whether arthroscopic reconstruction of the inferior glenohumeral ligament restores anterior, posterior, and inferior stability relative to intact, Bankart lesion, and Bankart repair conditions.",
+    image: "/ighl-img-4248.jpg",
+    imageAlt: "Cadaveric shoulder setup for the IGHL study",
+    paperUrl: "",
+    repoUrl: "",
+  },
+  {
+    title: "Rabbit Achilles Tendon Potting",
+    meta: "Manuscript in revision · First author",
+    summary:
+      "Development and validation of a reproducible PMMA-based potting method for tensile biomechanical testing of rabbit Achilles tendon constructs, designed for efficient and standardized high-throughput testing with minimal grip-related failure.",
+    image: "/rabbit-achilles-image.png",
+    imageAlt: "Rabbit Achilles tendon potting project image",
+    paperUrl: "",
+    repoUrl: "",
+  },
+];
+
+const ongoingItems = [
+  {
+    title: "FiberLock patch testing in MPFL application",
+    meta: "Ongoing work",
+    summary:
+      "Biomechanical testing and setup development for FiberLock patch applications in MPFL reconstruction. The project continues as ongoing work within the broader research pipeline.",
+  },
+  {
+    title: "MyoPatch testing in uterus and gluteus medius models",
+    meta: "Ongoing work",
+    summary:
+      "Experimental and setup work for Zurimed patch testing in uterine tissue and gluteus medius related applications. The project remains part of the ongoing work portfolio.",
+  },
+];
+---
+
+<BaseLayout title="Research" activeNavItem="research">
+  <section class="max-w-3xl">
+    <h1 class="mb-8 text-4xl font-semibold tracking-tight">Research</h1>
+    <div class="space-y-3 text-lg leading-8 text-base-content/80">
+      <p>
+        My research interests focus on biomechanics, clinically relevant
+        engineering problems, and quantitative methods in translational
+        research settings.
+      </p>
+      <p>
+        Below is a selection of current work and published papers. Where
+        available, entries link to the paper and the supporting code.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12 space-y-12">
+    <h2 class="text-2xl font-semibold tracking-tight">Current Work</h2>
+    {
+      inPreparationItems.map((item) => (
+        <article class="grid gap-6 border-b border-base-300 pb-12 md:grid-cols-[14rem_1fr] md:items-start">
+          <div>
+            {
+              item.video ? (
+                <video
+                  src={item.video}
+                  poster={item.image}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label={item.imageAlt}
+                  class="w-full rounded-sm border border-base-300 object-cover"
+                />
+              ) : (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt}
+                  class="w-full rounded-sm border border-base-300 object-cover"
+                />
+              )
+            }
+          </div>
+
+          <div class="max-w-3xl">
+            <h2 class="text-2xl font-semibold tracking-tight">{item.title}</h2>
+            <div class="mt-1 text-sm text-base-content/60">{item.meta}</div>
+            <p class="mt-4 leading-8 text-base-content/80">{item.summary}</p>
+
+            <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              {
+                item.paperUrl && (
+                  <a
+                    class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                    href={item.paperUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    paper
+                  </a>
+                )
+              }
+              {
+                item.repoUrl && (
+                  <a
+                    class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                    href={item.repoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    github
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </article>
+      ))
+    }
+    {
+      ongoingItems.map((item) => (
+        <article class="grid gap-6 border-b border-base-300 pb-12 md:grid-cols-[14rem_1fr] md:items-start">
+          <div class="flex aspect-[4/3] w-full flex-col justify-between rounded-sm border border-base-300 bg-base-200 p-5">
+            <div class="text-xs uppercase tracking-[0.2em] text-base-content/55">
+              Ongoing
+            </div>
+            <div>
+              <div class="text-3xl font-semibold tracking-tight">Current</div>
+              <div class="mt-2 text-sm text-base-content/65">{item.meta}</div>
+            </div>
+          </div>
+
+          <div class="max-w-3xl">
+            <h3 class="text-2xl font-semibold tracking-tight">{item.title}</h3>
+            <p class="mt-4 leading-8 text-base-content/80">{item.summary}</p>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="mt-14 space-y-12">
+    <h2 class="text-2xl font-semibold tracking-tight">Published</h2>
+    {
+      researchItems.map((item) => (
+        <article class="grid gap-6 border-b border-base-300 pb-12 md:grid-cols-[14rem_1fr] md:items-start">
+          <div class="flex aspect-[4/3] w-full flex-col justify-between rounded-sm border border-base-300 bg-base-200 p-5">
+            <div class="text-xs uppercase tracking-[0.2em] text-base-content/55">
+              Publication
+            </div>
+            <div>
+              <div class="text-4xl font-semibold tracking-tight">{item.visualLabel}</div>
+              <div class="mt-2 text-sm text-base-content/65">{item.visualMeta}</div>
+            </div>
+          </div>
+
+          <div class="max-w-3xl">
+            <h2 class="text-2xl font-semibold tracking-tight">{item.title}</h2>
+            <div class="mt-1 text-sm text-base-content/60">{item.meta}</div>
+            <p class="mt-4 leading-8 text-base-content/80">{item.summary}</p>
+
+            <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              {
+                item.paperUrl && (
+                  <a
+                    class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                    href={item.paperUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    paper
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

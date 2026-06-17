@@ -1,78 +1,55 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const last_posts = posts.slice(0, 3);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+<BaseLayout>
+  <section class="grid gap-8 md:grid-cols-[1fr_12rem] md:items-start">
+    <div class="max-w-2xl">
+      <h1 class="mb-8 text-4xl font-semibold tracking-tight">About</h1>
+      <div class="space-y-5 text-lg leading-8 text-base-content/85">
+        <p>
+          I am a biomedical engineer with a bachelor's and master's degree from
+          <a
+            class="font-medium underline underline-offset-4 decoration-base-content/50 hover:decoration-base-content"
+            href="https://ethz.ch"
+            target="_blank"
+            rel="noreferrer"
+          >ETH Zurich</a>,
+          affiliated with the
+          <a
+            class="font-medium underline underline-offset-4 decoration-base-content/50 hover:decoration-base-content"
+            href="https://orthobiomech.ethz.ch"
+            target="_blank"
+            rel="noreferrer"
+          >Orthopaedic Biomechanics Lab</a>.
+        </p>
+        <p>
+          My work focuses on biomechanics, clinical research, sports science,
+          and machine learning applied to these fields, with a strong interest
+          in teaching.
+        </p>
+        <p>
+          My recent work has been as a lab engineer in a research lab, focused
+          on technical and applied work at the intersection of engineering and
+          research.
+        </p>
+        <p>
+          This site is a home for my research and teaching.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        <a class="link link-hover" href="https://github.com/jeroeng44" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="link link-hover" href="https://www.linkedin.com/in/jeroen-g-7814a9278/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="link link-hover" href="mailto:jeroengrigioni@icloud.com">Email</a>
+        <a class="link link-hover" href="/JeroenGrigioniCV.pdf" target="_blank" rel="noreferrer">CV</a>
+      </div>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>
-    </div>
-  </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div>
-
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-  </div>
-
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+    <img
+      src="/profile.png"
+      alt="Portrait"
+      class="w-full max-w-[12rem] rounded-sm border border-base-300 object-cover"
+    />
+  </section>
 </BaseLayout>

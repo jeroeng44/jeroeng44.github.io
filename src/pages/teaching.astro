@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const teachingRoles = [
+  {
+    title: "Lead tutor for the Laboratory Course in Medical Technology",
+    meta: "ETH Zurich · February 2024 to present",
+    visualLabel: "2024-present",
+    visualMeta: "Lab course lead",
+    videoUrl: "https://www.youtube.com/watch?v=5BhAfb5lKLA",
+    summary:
+      "I led the tutorial support for around 300 students working on bone plate design and testing, coordinating roughly eight teaching assistants and supporting the full workflow from CAD to finite element analysis, material testing, and biomechanical testing.",
+  },
+  {
+    title: "Supervision of research internships and focus projects",
+    meta: "ETH Zurich · February 2024 to present",
+    visualLabel: "2024-present",
+    visualMeta: "Student supervision",
+    summary:
+      "Alongside the laboratory course, I supervised students during research internships in our lab and supported focus projects involving multiple students.",
+  },
+  {
+    title: "Physical education teacher",
+    meta: "Sekundarschule Spreitenbach · September 2023 to January 2024",
+    visualLabel: "2023-2024",
+    visualMeta: "School teaching",
+    summary:
+      "I taught physical education in a secondary school setting, building on my formal training in teaching and sport.",
+  },
+  {
+    title: "Teaching diploma in physical education",
+    meta: "ETH Zurich · 2018 to 2023",
+    visualLabel: "2018-2023",
+    visualMeta: "Teaching diploma",
+    summary:
+      "Alongside my studies, I pursued a teaching diploma in physical education with both theoretical and practical training across multiple sports.",
+  },
+  {
+    title: "Mathematics tutor and teaching assistant",
+    meta: "ETH Zurich · September 2019 to February 2020",
+    visualLabel: "2019-2020",
+    visualMeta: "Math TA",
+    summary:
+      "I supported students by summarizing lecture content, assisting with weekly self-study, and working as a teaching assistant to Prof. Farkas.",
+  },
+  {
+    title: "Private mathematics tutor",
+    meta: "Zurcher Nachhilfe · June 2019 to August 2021",
+    visualLabel: "2019-2021",
+    visualMeta: "Private tutoring",
+    summary:
+      "I provided individualized mathematics tutoring to help students strengthen their understanding and improve their performance.",
+  },
+];
+---
+
+<BaseLayout title="Teaching" activeNavItem="teaching">
+  <section class="max-w-3xl">
+    <h1 class="mb-8 text-4xl font-semibold tracking-tight">Teaching</h1>
+    <div class="space-y-4 text-lg leading-8 text-base-content/80">
+      <p>
+        Teaching is a consistent part of my work alongside research and
+        engineering.
+      </p>
+      <p>
+        My experience spans formal teacher training, university teaching
+        support, private tutoring, and school teaching.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12 space-y-12">
+    {
+      teachingRoles.map((item) => (
+        <article class="grid gap-6 border-b border-base-300 pb-12 md:grid-cols-[14rem_1fr] md:items-start">
+          <div class="flex aspect-[4/3] w-full flex-col justify-between rounded-sm border border-base-300 bg-base-200 p-5">
+            <div class="text-xs uppercase tracking-[0.2em] text-base-content/55">
+              Teaching
+            </div>
+            <div>
+              <div class="text-4xl font-semibold tracking-tight">{item.visualLabel}</div>
+              <div class="mt-2 text-sm text-base-content/65">{item.visualMeta}</div>
+            </div>
+          </div>
+
+          <div class="max-w-3xl">
+            <h2 class="text-2xl font-semibold tracking-tight">{item.title}</h2>
+            <div class="mt-1 text-sm text-base-content/60">{item.meta}</div>
+            <p class="mt-4 leading-8 text-base-content/80">{item.summary}</p>
+            {
+              item.videoUrl && (
+                <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                  <a
+                    class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                    href={item.videoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    course video
+                  </a>
+                </div>
+              )
+            }
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>
