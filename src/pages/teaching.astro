@@ -40,6 +40,8 @@ const teachingRoles = [
     meta: "ETH Zurich · September 2019 to February 2020",
     visualLabel: "2019-2020",
     visualMeta: "Math TA",
+    courseUrl:
+      "https://ww2.vvz.ethz.ch//Vorlesungsverzeichnis/lerneinheit.view?semkez=2020W&ansicht=LEHRVERANSTALTUNGEN&lerneinheitId=141186&lang=de",
     summary:
       "I supported students by summarizing lecture content, assisting with weekly self-study, and working as a teaching assistant to Prof. Farkas.",
   },
@@ -88,16 +90,32 @@ const teachingRoles = [
             <div class="mt-1 text-sm text-base-content/60">{item.meta}</div>
             <p class="mt-4 leading-8 text-base-content/80">{item.summary}</p>
             {
-              item.videoUrl && (
+              (item.videoUrl || item.courseUrl) && (
                 <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-                  <a
-                    class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
-                    href={item.videoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    course video
-                  </a>
+                  {
+                    item.courseUrl && (
+                      <a
+                        class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                        href={item.courseUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        math tutor at ETH
+                      </a>
+                    )
+                  }
+                  {
+                    item.videoUrl && (
+                      <a
+                        class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                        href={item.videoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        course video
+                      </a>
+                    )
+                  }
                 </div>
               )
             }

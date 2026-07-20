@@ -70,6 +70,7 @@ const inPreparationItems = [
     video: "/syndesmotic-mapping.mp4",
     imageAlt: "Dynamic syndesmotic mapping visualization",
     paperUrl: "",
+    presentationUrl: "/Presentation_SOC2026.pdf",
     repoUrl: "https://github.com/jeroeng44/SyndesmoticMapping",
   },
   {
@@ -113,12 +114,16 @@ const ongoingItems = [
     meta: "Ongoing work",
     summary:
       "Biomechanical testing and setup development for FiberLock patch applications in MPFL reconstruction. The project continues as ongoing work within the broader research pipeline.",
+    video: "/felting.mp4",
+    imageAlt: "Felting visualization for FiberLock patch testing",
   },
   {
     title: "MyoPatch testing in uterus and gluteus medius models",
     meta: "Ongoing work",
     summary:
       "Experimental and setup work for Zurimed patch testing in uterine tissue and gluteus medius related applications. The project remains part of the ongoing work portfolio.",
+    video: "/felting.mp4",
+    imageAlt: "Felting visualization for ongoing patch testing research",
   },
 ];
 ---
@@ -187,6 +192,18 @@ const ongoingItems = [
                 )
               }
               {
+                item.presentationUrl && (
+                  <a
+                    class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
+                    href={item.presentationUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Presentation_SOC2026
+                  </a>
+                )
+              }
+              {
                 item.repoUrl && (
                   <a
                     class="font-medium underline underline-offset-4 decoration-base-content/40 hover:decoration-base-content"
@@ -206,14 +223,37 @@ const ongoingItems = [
     {
       ongoingItems.map((item) => (
         <article class="grid gap-6 border-b border-base-300 pb-12 md:grid-cols-[14rem_1fr] md:items-start">
-          <div class="flex aspect-[4/3] w-full flex-col justify-between rounded-sm border border-base-300 bg-base-200 p-5">
-            <div class="text-xs uppercase tracking-[0.2em] text-base-content/55">
-              Ongoing
-            </div>
-            <div>
-              <div class="text-3xl font-semibold tracking-tight">Current</div>
-              <div class="mt-2 text-sm text-base-content/65">{item.meta}</div>
-            </div>
+          <div>
+            {
+              item.video ? (
+                <video
+                  src={item.video}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label={item.imageAlt}
+                  class="w-full rounded-sm border border-base-300 object-cover"
+                />
+              ) : item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt}
+                  class="w-full rounded-sm border border-base-300 object-cover"
+                />
+              ) : (
+                <div class="flex aspect-[4/3] w-full flex-col justify-between rounded-sm border border-base-300 bg-base-200 p-5">
+                  <div class="text-xs uppercase tracking-[0.2em] text-base-content/55">
+                    Ongoing
+                  </div>
+                  <div>
+                    <div class="text-3xl font-semibold tracking-tight">Current</div>
+                    <div class="mt-2 text-sm text-base-content/65">{item.meta}</div>
+                  </div>
+                </div>
+              )
+            }
           </div>
 
           <div class="max-w-3xl">
