@@ -1,0 +1,36 @@
+<script>
+  type GoatCounter = {
+    no_onload: boolean;
+    endpoint: string;
+    count?: (page: { path: string; title: string }) => void;
+  };
+
+  const analyticsWindow = window as Window & { goatcounter?: GoatCounter };
+
+  // Keep local development and previews out of the visitor statistics.
+  if (import.meta.env.PROD && location.hostname === "jeroeng44.github.io") {
+    analyticsWindow.goatcounter = {
+      no_onload: true,
+      endpoint: "https://jeroeng44.goatcounter.com/count",
+    };
+
+    let lastPath: string | undefined;
+    const countPage = () => {
+      const counter = analyticsWindow.goatcounter;
+      if (!counter?.count || lastPath === location.pathname) return;
+
+      counter.count({ path: location.pathname, title: document.title });
+      lastPath = location.pathname;
+    };
+
+    // Astro's client-side navigation does not reload the analytics script.
+    document.addEventListener("astro:page-load", countPage);
+
+    const script = document.createElement("script");
+    script.src = "https://gc.zgo.at/count.js";
+    script.async = true;
+    script.dataset.goatcounter = analyticsWindow.goatcounter.endpoint;
+    script.addEventListener("load", countPage, { once: true });
+    document.head.appendChild(script);
+  }
+</script>
